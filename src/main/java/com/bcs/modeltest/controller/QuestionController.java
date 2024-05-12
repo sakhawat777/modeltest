@@ -18,7 +18,7 @@ public class QuestionController {
         return questionService.getAllQuestions();
 
     }
-    @GetMapping("/category/{category}")
+    @GetMapping("category/{category}")
     public List<Question> getQuestionsByCategory(@PathVariable String category) {
         return questionService.getQuestionsByCategory(category);
 

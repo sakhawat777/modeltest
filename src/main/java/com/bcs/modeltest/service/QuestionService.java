@@ -17,7 +17,7 @@ private final QuestionDao questionDao;
     }
 
     public List<Question> getQuestionsByCategory(String category) {
-        return QuestionDao.findByCategory(category);
+        return questionDao.findByCategory(category);
     }
 
     public String addQuestion(Question question) {
