@@ -1,4 +1,4 @@
-package com.bcs.modeltest;
+package com.bcs.modeltest.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

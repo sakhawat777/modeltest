@@ -1,6 +1,6 @@
 package com.bcs.modeltest.service;
 
-import com.bcs.modeltest.Question;
+import com.bcs.modeltest.model.Question;
 import com.bcs.modeltest.dao.QuestionDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,5 +18,10 @@ private final QuestionDao questionDao;
 
     public List<Question> getQuestionsByCategory(String category) {
         return QuestionDao.findByCategory(category);
+    }
+
+    public String addQuestion(Question question) {
+        questionDao.save(question);
+        return "Data Successfully Created...";
     }
 }
