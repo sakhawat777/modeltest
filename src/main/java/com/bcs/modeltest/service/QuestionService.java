@@ -15,4 +15,8 @@ private final QuestionDao questionDao;
     public List<Question> getAllQuestions() {
         return questionDao.findAll();
     }
+
+    public List<Question> getQuestionsByCategory(String category) {
+        return QuestionDao.findByCategory(category);
+    }
 }
