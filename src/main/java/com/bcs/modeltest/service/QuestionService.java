@@ -26,8 +26,14 @@ private final QuestionDao questionDao;
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
 
-    public List<Question> getQuestionsByCategory(String category) {
-        return questionDao.findByCategory(category);
+    public ResponseEntity<List<Question>> getQuestionsByCategory(String category) {
+       try{
+           return new ResponseEntity<>(questionDao.findByCategory(category), HttpStatus.OK);
+       }
+        catch (Exception e) {
+        e.printStackTrace();
+    }
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
 
     public String addQuestion(Question question) {
