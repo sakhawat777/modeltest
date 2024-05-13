@@ -36,9 +36,14 @@ private final QuestionDao questionDao;
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
 
-    public String addQuestion(Question question) {
-        questionDao.save(question);
-        return "Data Successfully Created...";
+    public ResponseEntity<String> addQuestion(Question question) {
+        try {
+            questionDao.save(question);
+            return new ResponseEntity<>("Data Successfully Created...", HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Failed to create data.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     public String deleteQuestion(int id) {
