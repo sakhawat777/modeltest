@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,5 +29,24 @@ private final QuestionDao questionDao;
     public String deleteQuestion(int id) {
         questionDao.deleteById(id);
         return "Deleted Successfully...";
+    }
+
+    public String updateQuestion(int id, Question question) {
+        Optional<Question> optionalQuestion = questionDao.findById(id);
+        if (optionalQuestion.isPresent()) {
+            Question existingQuestion = optionalQuestion.get();
+            existingQuestion.setQuestionTitle(question.getQuestionTitle());
+            existingQuestion.setOption1(question.getOption1());
+            existingQuestion.setOption2(question.getOption2());
+            existingQuestion.setOption3(question.getOption3());
+            existingQuestion.setOption4(question.getOption4());
+            existingQuestion.setRightAnswer(question.getRightAnswer());
+            existingQuestion.setDifficultyLevel(question.getDifficultyLevel());
+            existingQuestion.setCategory(question.getCategory());
+            questionDao.save(existingQuestion);
+            return "Updated Successfully...";
+        } else {
+            return "Question not found for id: " + id;
+        }
     }
 }
