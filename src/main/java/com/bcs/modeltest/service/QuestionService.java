@@ -24,4 +24,9 @@ private final QuestionDao questionDao;
         questionDao.save(question);
         return "Data Successfully Created...";
     }
+
+    public String deleteQuestion(int id) {
+        questionDao.deleteById(id);
+        return "Deleted Successfully...";
+    }
 }
