@@ -3,6 +3,7 @@ package com.bcs.modeltest.controller;
 import com.bcs.modeltest.model.Question;
 import com.bcs.modeltest.service.QuestionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @GetMapping("allQuestions")
-    public List<Question> getAllQuestions() {
+    public ResponseEntity<List<Question>> getAllQuestions() {
         return questionService.getAllQuestions();
 
     }
