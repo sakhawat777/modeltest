@@ -1,6 +1,7 @@
 package com.bcs.modeltest.controller;
 
 import com.bcs.modeltest.model.QuestionWrapper;
+import com.bcs.modeltest.model.Response;
 import com.bcs.modeltest.service.QuizService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,4 +23,8 @@ public ResponseEntity<String> createQuiz(@RequestParam String category, @Request
        return  quizService.getQuizQuestion(id);
 
     }
+   @PostMapping("submit/{id}")
+    public ResponseEntity<Integer> submitQuiz(@PathVariable int id, @RequestBody List<Response> responses){
+       return  quizService.calculateResult(id, responses);
+   }
 }
